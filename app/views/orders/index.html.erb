@@ -1,0 +1,49 @@
+<h1>Listing orders</h1>
+
+<table>
+  <tr>
+    <th>Fname</th>
+    <th>Lname</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Email</th>
+    <th>Postcode</th>
+    <th>Phone</th>
+    <th>Create at</th>
+    <th>Pay method</th>
+    <th>Amount</th>
+    <th>Inv num</th>
+    <th>Province</th>
+    <th>Customer</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.fname %></td>
+    <td><%= order.lname %></td>
+    <td><%= order.address %></td>
+    <td><%= order.city %></td>
+    <td><%= order.email %></td>
+    <td><%= order.postCode %></td>
+    <td><%= order.phone %></td>
+    <td><%= order.create_at %></td>
+    <td><%= order.pay_method %></td>
+    <td><%= order.amount %></td>
+    <td><%= order.inv_num %></td>
+    <td><%= order.province %></td>
+    <td><%= order.customer %></td>
+    <td><%= order.status %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+    <td><%= link_to 'Destroy', order, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Order', new_order_path %>

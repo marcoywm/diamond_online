@@ -1,0 +1,45 @@
+<h1>Listing products</h1>
+
+<%= link_to 'New Product', new_product_path %>
+<table>
+  <tr>
+  </tr>
+  
+<%product=@products%>
+<%count=product.size%>
+<%j=(count/3).floor%>
+<%mod=count%3%>
+<%j.times do |k|%>
+  <tr>
+ <%3.times do |i|%>
+  <td></td>
+    <td align="center"><%= product[3*k+i].name %></td>
+    <td></td> 
+<%end%>
+</tr>
+<tr>
+<%3.times do |i|%>
+    <td><%= link_to 'Show', product[3*k+i] %></td>
+    <td align="center"><%= link_to 'Edit', edit_product_path(product[3*k+i]) %></td>
+    <td><%= link_to 'Destroy', product[3*k+i], confirm: 'Are you sure?', method: :delete %></td>
+  <%end%>
+</tr>
+  <%end%>
+<tr>
+    <%mod.times do |k|%>
+    <td></td>
+    <td align="center"><%= product[3*j+k].name %></td>
+    <td></td> 
+<%end%>
+</tr>
+<tr>
+<%mod.times do |k|%>
+    <td><%= link_to 'Show', product[3*j+k] %></td>
+    <td align="center"><%= link_to 'Edit', edit_product_path(product[3*j+k]) %></td>
+    <td><%= link_to 'Destroy', product[3*j+k], confirm: 'Are you sure?', method: :delete %></td>
+  <%end%>
+</tr>
+</table>
+<br />
+
+
