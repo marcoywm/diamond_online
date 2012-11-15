@@ -7,36 +7,52 @@
   
 <%product=@products%>
 <%count=product.size%>
-<%j=(count/3).floor%>
-<%mod=count%3%>
+<%j=(count/4).floor%>
+<%mod=count%4%>
 <%j.times do |k|%>
-  <tr>
- <%3.times do |i|%>
-  <td></td>
-    <td align="center"><%= product[3*k+i].name %></td>
-    <td></td> 
+<tr>
+  <%4.times do |i|%>
+    
+    <%img=product[4*k+i].images.first.name%>
+    <td colspan="3" align="center"><%=image_tag img, :width => '150' ,:height=>'150'%></td>
+     
 <%end%>
 </tr>
 <tr>
-<%3.times do |i|%>
-    <td><%= link_to 'Show', product[3*k+i] %></td>
-    <td align="center"><%= link_to 'Edit', edit_product_path(product[3*k+i]) %></td>
-    <td><%= link_to 'Destroy', product[3*k+i], confirm: 'Are you sure?', method: :delete %></td>
+ <%4.times do |i|%>
+    
+    <td colspan="3" align="center"><%= product[4*k+i].name %></td>
+     
+<%end%>
+</tr>
+<tr>
+<%4.times do |i|%>
+    <td><%= link_to 'Show', product[4*k+i] %></td>
+    <td align="center"><%= link_to 'Edit', edit_product_path(product[4*k+i]) %></td>
+    <td><%= link_to 'Destroy', product[4*k+i], confirm: 'Are you sure?', method: :delete %></td>
   <%end%>
 </tr>
   <%end%>
+  
+  <tr>
+    <%mod.times do |k|%>
+     <%img=product[4*j+k].images.first.name%>
+    <td colspan="3" align="center"><%=image_tag img, :width => '150' , :height=>'150'%></td>
+    
+<%end%>
+
 <tr>
     <%mod.times do |k|%>
-    <td></td>
-    <td align="center"><%= product[3*j+k].name %></td>
-    <td></td> 
+    
+    <td colspan="3" align="center"><%= product[4*j+k].name %></td>
+     
 <%end%>
 </tr>
 <tr>
 <%mod.times do |k|%>
-    <td><%= link_to 'Show', product[3*j+k] %></td>
-    <td align="center"><%= link_to 'Edit', edit_product_path(product[3*j+k]) %></td>
-    <td><%= link_to 'Destroy', product[3*j+k], confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', product[4*j+k] %></td>
+    <td align="center"><%= link_to 'Edit', edit_product_path(product[4*j+k]) %></td>
+    <td><%= link_to 'Destroy', product[4*j+k], confirm: 'Are you sure?', method: :delete %></td>
   <%end%>
 </tr>
 </table>

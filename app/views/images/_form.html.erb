@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :product%><br />
-    <%= f.text_field :product_id %>
+    <%= f.select :product_id, @products %>
   </div>
   <div class="actions">
     <%= f.submit %>

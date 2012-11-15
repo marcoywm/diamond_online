@@ -1,0 +1,47 @@
+<h1>Products</h1>
+
+
+<table>
+  <tr>
+  </tr>
+  
+<%product=@products%>
+<%count=product.size%>
+<%j=(count/4).floor%>
+<%mod=count%4%>
+<%j.times do |k|%>
+<tr>
+  <%4.times do |i|%>
+    
+    <%img=product[4*k+i].images.first.name%>
+    <td colspan="3" align="center"><%=link_to((image_tag img, :width => '150' ,:height=>'150') ,main_path(product[4*k+i]))%></td>
+     
+<%end%>
+</tr>
+<tr>
+ <%4.times do |i|%>
+    
+    <td colspan="3" align="center"><%= link_to product[4*k+i].name, main_path(product[4*k+i]) %></td>
+     
+<%end%>
+</tr>
+<%end%>
+  
+  <tr>
+    <%mod.times do |k|%>
+     <%img=product[4*j+k].images.first.name%>
+    <td colspan="3" align="center"><%=link_to((image_tag img, :width => '150' ,:height=>'150') ,main_path(product[4*j+k]))%></td>
+    
+<%end%>
+
+<tr>
+    <%mod.times do |k|%>
+    
+    <td colspan="3" align="center"><%=link_to product[4*j+k].name, main_path(product[4*j+k]) %></td>
+     
+<%end%>
+</tr>
+</table>
+<br />
+
+

@@ -1,4 +1,9 @@
 DiamondSite::Application.routes.draw do
+  
+  root :to => 'main#index'
+  match 'main/:id' => 'main#show', :as => 'main', :via => :get
+  
+  
   resources :table2s
 
   resources :line_items

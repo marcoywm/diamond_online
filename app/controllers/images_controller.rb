@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
   # GET /images/new.json
   def new
     @image = Image.new
-
+    @products = Product.all.collect { |p| [p.name, p.id] }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @image }
@@ -35,6 +35,7 @@ class ImagesController < ApplicationController
   # GET /images/1/edit
   def edit
     @image = Image.find(params[:id])
+    @products = Product.all.collect { |p| [p.name, p.id] }
   end
 
   # POST /images

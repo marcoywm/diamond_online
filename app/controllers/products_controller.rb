@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
+  
+  before_filter :require_sudo, :only => [:edit, :update, :destroy]
   def index
     @products = Product.all
 
