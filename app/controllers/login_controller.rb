@@ -1,7 +1,7 @@
 class LoginController < ApplicationController
 
       def   login
-        @customer = Customer.where(:userName => params[:username]).where(:password => params[:password]).first
+
      end
       def haslogin
         @customer = Customer.where(:userName => params[:username]).where(:password => params[:password]).first
