@@ -1,8 +1,9 @@
 class ProvincesController < ApplicationController
   # GET /provinces
   # GET /provinces.json
+   before_filter :require_sudo
   def index
-    @provinces = Province.all
+    @provinces = Province.includes(:customers).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

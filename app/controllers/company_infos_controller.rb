@@ -1,6 +1,7 @@
 class CompanyInfosController < ApplicationController
   # GET /company_infos
   # GET /company_infos.json
+   before_filter :require_sudo, :only => [:edit, :update, :destroy]
   def index
     @company_infos = CompanyInfo.all
 

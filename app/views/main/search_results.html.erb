@@ -1,0 +1,9 @@
+<h1>Products Search Results for "<%= @keyword %>"</h1>
+
+<% if @products.empty? %>
+    <p><em>Sorry no products were found.</em></p>
+<% end %>
+
+<div class="mains">
+  <%= render :partial => 'main', :collection => @products, :as => 'product' %>
+</div>

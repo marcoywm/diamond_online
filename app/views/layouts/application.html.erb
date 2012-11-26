@@ -7,8 +7,58 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="textPage">
+  <div id="header">
+    <div id="graph1">
+      <div><%= image_tag 'images_019.jpg', :width => '100', :height => '100' %></div>
+    </div>
+    <div id="line1">
+	<ul>
+	  <li><%=link_to 'admin Login', "http://localhost:3000/administrator"%></li>
+	  <li>|</li>
+	  <li><%= link_to 'Sign Up', new_customer_path %></li>
+	  <li>|</li>
+	  <li><%=link_to 'About Us', "http://localhost:3000/company_infos/2/"%></li>
+	  <li>|</li>
+	  <li><%=link_to 'About Us', "http://localhost:3000/company_infos/2/"%></li>
+	  <li>|</li>
+	  <li><%=mail_to "wyu45@academic.rrc.ca", 'Contact Us'%></li>
+        </ul>
+      </div>
+      <div id="navigate">
+	<ul>
+	    <li><%=link_to 'Home', "http://localhost:3000"%></li>
+	    <li><%=link_to 'Products', "http://localhost:3000"%></li>
+	    <li><%=link_to 'Login', "http://localhost:3000/login"%></li>
+	    <li><%=link_to 'About Us', "http://localhost:3000/company_infos/2/"%></li>
+	  </ul>
+       </div>
+       <div id="headpic">
+          <div><%= image_tag 'bar.jpg', :width => '750', :height => '50' %></div>
+       </div>
+    </div>
+        <div><%= image_tag 'subNavBackgroundTop.png', :width => '1100', :height => '5' %></div>
+      
+        <div id="vnavigation">
+          <h5>
+            <%= link_to 'Search Products', search_path %>
+          </h5>
+        <h5>JEWELLERY CATAGORY</h5>
+	  <ul>
+          <% Product::ALLOW_Category.each do |level| %>
+              <li><%= link_to level, category_path(:level => level) %></li>
+          <% end %>
 
-<%= yield %>
+
+      </ul>
+      </div>
+
+        <div id="content">
+        <%= yield %>
+        </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
 
 </body>
 </html>

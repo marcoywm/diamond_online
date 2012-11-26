@@ -1,61 +1,12 @@
 <h1>Listing products</h1>
 
 <%= link_to 'New Product', new_product_path %>
-<table>
-  <tr>
-  </tr>
-  
-<%product=@products%>
-<%count=product.size%>
-<%j=(count/4).floor%>
-<%mod=count%4%>
-<%j.times do |k|%>
-<tr>
-  <%4.times do |i|%>
-    
-    <%img=product[4*k+i].images.first.name%>
-    <td colspan="3" align="center"><%=image_tag img, :width => '150' ,:height=>'150'%></td>
-     
-<%end%>
-</tr>
-<tr>
- <%4.times do |i|%>
-    
-    <td colspan="3" align="center"><%= product[4*k+i].name %></td>
-     
-<%end%>
-</tr>
-<tr>
-<%4.times do |i|%>
-    <td><%= link_to 'Show', product[4*k+i] %></td>
-    <td align="center"><%= link_to 'Edit', edit_product_path(product[4*k+i]) %></td>
-    <td><%= link_to 'Destroy', product[4*k+i], confirm: 'Are you sure?', method: :delete %></td>
-  <%end%>
-</tr>
-  <%end%>
-  
-  <tr>
-    <%mod.times do |k|%>
-     <%img=product[4*j+k].images.first.name%>
-    <td colspan="3" align="center"><%=image_tag img, :width => '150' , :height=>'150'%></td>
-    
-<%end%>
-
-<tr>
-    <%mod.times do |k|%>
-    
-    <td colspan="3" align="center"><%= product[4*j+k].name %></td>
-     
-<%end%>
-</tr>
-<tr>
-<%mod.times do |k|%>
-    <td><%= link_to 'Show', product[4*j+k] %></td>
-    <td align="center"><%= link_to 'Edit', edit_product_path(product[4*j+k]) %></td>
-    <td><%= link_to 'Destroy', product[4*j+k], confirm: 'Are you sure?', method: :delete %></td>
-  <%end%>
-</tr>
-</table>
+<br/>
+<%=link_to 'back to Manage dashborad', "http://localhost:3000/administrator"%>
+<h1></h1>
+<div class="products">
+  <%= render @products %>
+</div>
 <br />
 
 

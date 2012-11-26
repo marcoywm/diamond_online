@@ -1,8 +1,9 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
+   before_filter :require_sudo
   def index
-    @customers = Customer.all
+    @customers = Customer.includes(:province).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,7 @@ class CustomersController < ApplicationController
   # GET /customers/new.json
   def new
     @customer = Customer.new
-
+    @provinces = Province.all.collect { |p| [p.name, p.id] }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @customer }
@@ -35,8 +36,13 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])
+    @provinces = Province.all.collect { |p| [p.name, p.id] }
   end
 
+   def editfile
+     @customer = Customer.find(params[:id])
+     @provinces = Province.all.collect { |p| [p.name, p.id] }
+   end
   # POST /customers
   # POST /customers.json
   def create
@@ -44,11 +50,13 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to login_path, notice: 'Customer was successfully created.' }
         format.json { render json: @customer, status: :created, location: @customer }
       else
+        @provinces = Province.all.collect { |p| [p.name, p.id] }
         format.html { render action: "new" }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
+
       end
     end
   end

@@ -1,0 +1,13 @@
+<h1>User Login</h1>
+
+<%= form_tag haslogined_path do %>
+    <%= label_tag "UserName" %>
+    <%= text_field_tag :username %> </br>  </br>
+    <%= label_tag "Password" %>
+    <%= password_field_tag :password %> </br>  </br>
+    <%= submit_tag "Login" %>
+<% end %>
+
+
+
+ <h2> <%=flash[:error]%></h2>

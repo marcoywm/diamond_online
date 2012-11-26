@@ -2,8 +2,14 @@ DiamondSite::Application.routes.draw do
   
   root :to => 'main#index'
   match 'main/:id' => 'main#show', :as => 'main', :via => :get
-  
-  
+  match "administrator" => "admin#index"
+  match 'main/a/:level' => 'main#a', :as => 'category', :via => :get
+  match "search" => "main#search", :as => 'search', :via => :get
+  match "login" => "login#login", :as => 'login', :via => :get
+  match "haslogin" => "login#haslogin", :as => 'haslogin', :via => :post
+  match 'customers/:id/editfile' => 'customers#edit', :as => 'editfile_customer', :via => :get
+  match "results" => "main#search_results", :as => 'results', :via => :post
+
   resources :table2s
 
   resources :line_items

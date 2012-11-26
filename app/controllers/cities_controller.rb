@@ -1,6 +1,7 @@
 class CitiesController < ApplicationController
   # GET /cities
   # GET /cities.json
+   before_filter :require_sudo
   def index
     @cities = City.all
 

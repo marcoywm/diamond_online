@@ -1,13 +1,9 @@
 load 'ar.rb'
 
+cus=Customer.all
 
-i=1
-
-81.times do
-  imga=Image.new
-  imga.name="images#{i}.jpg"
-  imga.product_id=i
-  imga.save
-  i=i+1
+cus.each do |cu|
+  puts cu.inspect
 end
+
 

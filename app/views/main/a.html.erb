@@ -1,0 +1,5 @@
+<h1> <%= params[:level] %> Category</h1>
+
+<div class="mains">
+  <%= render :partial => 'main', :collection => @products, :as => 'product' %>
+</div>

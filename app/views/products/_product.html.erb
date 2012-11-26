@@ -1,0 +1,16 @@
+<div class="product">
+  <table>
+    <tr>
+      <%img=product.images.first.name%>
+       <td colspan="3" align="center"><%=image_tag img, :width => '150' ,:height=>'150'%></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center"><%= product.name %></td>
+    </tr>
+    <tr>
+       <td><%= link_to 'Show', product %></td>
+       <td align="center"><%= link_to 'Edit', edit_product_path(product) %></td>
+       <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  </table>
+</div>

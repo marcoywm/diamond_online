@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
+   before_filter :require_sudo
   def index
     @orders = Order.all
 
