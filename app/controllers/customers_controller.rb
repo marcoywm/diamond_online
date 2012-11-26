@@ -50,7 +50,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to haslogin_path, notice: 'Customer was successfully created.' }
+        format.html { redirect_to login_path, notice: 'Customer was successfully created.' }
         format.json { render json: @customer, status: :created, location: @customer }
       else
         @provinces = Province.all.collect { |p| [p.name, p.id] }

@@ -7,7 +7,7 @@ DiamondSite::Application.routes.draw do
   match "search" => "main#search", :as => 'search', :via => :get
   match "login" => "login#login", :as => 'login', :via => :get
   match "haslogin" => "login#haslogin", :as => 'haslogin', :via => :post
-  match 'customers/:id/editfile' => 'customers#edit', :as => 'editfile_customer', :via => :get
+  match 'customers/:id/editfile' => 'customers#editfile', :as => 'editfile_customer', :via => :get
   match "results" => "main#search_results", :as => 'results', :via => :post
 
   resources :table2s
