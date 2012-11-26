@@ -1,4 +1,7 @@
 <h1> Welcome  <%= @customer.userName %></h1>
 
+
+<%= link_to 'Show', @customer %>   <br/>
+
 <%= link_to 'update your profile',  editfile_customer_path(@customer) %>   <br/>  <br/>
 <%= link_to 'logout', root_path %>
