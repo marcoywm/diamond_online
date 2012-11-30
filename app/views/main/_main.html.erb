@@ -2,10 +2,10 @@
   <table>
     <tr>
       <%img=product.images.first.name%>
-    <td colspan="3" align="center"><%=link_to((image_tag img, :width => '150' ,:height=>'150'), main_path(product))%></td>
+    <td ><%=link_to((image_tag img, :width => '150' ,:height=>'150'), main_path(product))%></td>
     </tr>
     <tr>
-      <td colspan="3" align="center"><%= link_to product.name, main_path(product)%></td>
+      <td ><%= link_to product.name, main_path(product)%></td>
     </tr>
   </table>
 </div>
