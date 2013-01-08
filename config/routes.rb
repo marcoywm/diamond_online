@@ -1,5 +1,7 @@
 DiamondSite::Application.routes.draw do
   
+  resources :carts
+
   root :to => 'main#index'
   match 'main/:id' => 'main#show', :as => 'main', :via => :get
   match "administrator" => "admin#index"

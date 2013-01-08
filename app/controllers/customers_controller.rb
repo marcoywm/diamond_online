@@ -1,8 +1,9 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
-   before_filter :require_sudo
-  def index
+   before_filter :require_sudo, :only => [:edit, :update, :destroy]
+
+   def index
     @customers = Customer.includes(:province).all
 
     respond_to do |format|

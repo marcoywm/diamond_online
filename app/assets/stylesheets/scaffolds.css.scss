@@ -75,10 +75,10 @@ div {
 }
 #graph1
 {
-    width:100px;
+        width:100px;
 	height:100px;
 	float:left;
-	margin: 9.5px 9px 0px 10px;
+	margin: 30px 10px 10px 30px;
 }
 
 
@@ -114,8 +114,9 @@ div {
 {
 	float: right;
 	margin:25px;
-	margin-right:130px;
+	margin-right:150px;
 }
+
 #navigate li
 {
 	display: inline;
@@ -234,7 +235,30 @@ div {
 	color:#333;
 	
 }
+#content a:link, #content a:visited
+{
+	text-decoration: none;
+	color: #333;
+}
+#content a:hover
+{
+	text-decoration: none;
+	color: #fff;
+	background: #00C5CD;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    3px 3px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         3px 3px 5px rgba(50, 50, 50, 0.75);
+}
+
 .clear
 {
 	clear: both;
+}
+
+#cart
+{
+  float:right;
 }
