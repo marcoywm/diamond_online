@@ -1,7 +1,8 @@
 class MainController < ApplicationController
    def index
-    @products = Product.order('created_at DESC')
-
+    @products = Product.includes(:comments).paginate page: params[:page], order: 'created_at desc' ,
+    per_page: 9
+    @cart=current_cart
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -12,7 +13,8 @@ class MainController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
+    @comment = @product.comments.build
+    @cart=current_cart
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -26,7 +28,8 @@ class MainController < ApplicationController
    def a
      if Product::ALLOW_Category.include?(params[:level])
        @products = Product.where(:category => params[:level]).
-           order('created_at DESC')
+           order('created_at DESC').paginate page: params[:page],
+           per_page: 9
      else
        flash[:error] = "This category does not exist."
        redirect_to root_path
@@ -41,6 +44,7 @@ class MainController < ApplicationController
      @keyword = params[:keyword]
 
      @products = Product.where("name LIKE ?", "%#{@keyword}%")
+
    end
 
 end

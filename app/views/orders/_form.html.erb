@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fname %><br />
+    <%= f.label :first_name %><br />
     <%= f.text_field :fname %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br />
+    <%= f.label :last_name %><br />
     <%= f.text_field :lname %>
   </div>
   <div class="field">
@@ -39,13 +39,11 @@
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
-  <div class="field">
-    <%= f.label :create_at %><br />
-    <%= f.datetime_select :create_at %>
-  </div>
+
   <div class="field">
     <%= f.label :pay_method %><br />
-    <%= f.text_field :pay_method %>
+    <%= f.select :pay_method, Order::PAYMENT_TYPES,
+                      prompt: 'Select a payment method' %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
@@ -55,19 +53,13 @@
     <%= f.label :inv_num %><br />
     <%= f.number_field :inv_num %>
   </div>
-  <div class="field">
-    <%= f.label :province %><br />
-    <%= f.text_field :province %>
-  </div>
-  <div class="field">
-    <%= f.label :customer %><br />
-    <%= f.text_field :customer %>
-  </div>
+
+
   <div class="field">
     <%= f.label :status %><br />
     <%= f.text_field :status %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Place order' %>
   </div>
 <% end %>

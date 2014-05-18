@@ -4,7 +4,7 @@ class CompanyInfosController < ApplicationController
    before_filter :require_sudo, :only => [:edit, :update, :destroy]
   def index
     @company_infos = CompanyInfo.all
-
+    @cart=current_cart
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @company_infos }
@@ -15,7 +15,7 @@ class CompanyInfosController < ApplicationController
   # GET /company_infos/1.json
   def show
     @company_info = CompanyInfo.find(params[:id])
-
+    @cart=current_cart
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company_info }

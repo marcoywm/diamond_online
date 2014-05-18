@@ -10,10 +10,12 @@
 </p>
 
 <p>
-  <b>Describtion:</b>
+  <b>Description:</b>
   <%=@product.des %>
 
 </p>
+
+
 
 <p>
   <b>Price:</b>
@@ -21,13 +23,18 @@
 </p>
 
 <p>
+  <b>number you want to buy: </b>
+  <%= select_tag(:quantity, options_for_select(1..30)) %>
+</p>
+<p>
   <b>Status:</b>
   <%= @product.status %>
 </p>
-
 <p>
   </br>
-  <%= button_to 'Add to Cart', line_items_path(product_id: @product) %>
+  <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %>
 </p>
+
+
 
 <%= link_to 'Back', root_path %>

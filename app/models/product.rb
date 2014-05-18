@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   validates_inclusion_of :category, :in => ALLOW_Category
   has_many :images, :dependent => :destroy
   has_many :line_items
+  has_many :orders, through: :line_items
+  has_many :comments, :dependent => :destroy
   
   private
    def ensure_not_referenced_by_any_line_item

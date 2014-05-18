@@ -9,10 +9,13 @@
 <body>
 <div id="textPage">
   <div id="header">
-    <div id="graph1">
-     <ul>
-       
-      </ul>
+    <div id="cart">
+      <% if @cart==nil %>
+           <h5>Your Shopping Cart</h5>
+          <div><%= image_tag 'shopping_cart.png', :width => '80', :height => '80' %></div> 
+        <% else %>
+     <%= render @cart %>
+     <% end %>
     </div>
     <div id="line1">
 	<ul>
@@ -27,19 +30,33 @@
 	  <li><%=mail_to "wyu45@academic.rrc.ca", 'Contact Us'%></li>
         </ul>
       </div>
-      <div id="navigate">
+    <div id="navigate">
 	<ul>
 	    <li><%=link_to 'Home', "http://localhost:3000"%></li>
 	    <li><%=link_to 'Products', "http://localhost:3000"%></li>
-	    <li><%=link_to 'Login', "http://localhost:3000/login"%></li>
-	    <li><%=link_to 'About Us', "http://localhost:3000/company_infos/2/"%></li>
+
+      <% if session[:user]==nil %>
+          <li><%=link_to 'Login', "http://localhost:3000/login"%></li>
+           <% else %>
+          <li><%= link_to 'Logout', "http://localhost:3000/logout", method: :delete %></li>
+      <% end %>
+
+
+      <li><%=link_to 'About Us', "http://localhost:3000/company_infos/2/"%></li>
 	  </ul>  
-       </div>
+   </div>
+
       
        <div id="headpic">
-          <div><%= image_tag 'bar.jpg', :width => '750', :height => '50' %></div> 
+          <div><%= image_tag 'bar.jpg', :width => '750', :height => '50' %></div>
+
        </div>
-       
+      <div id="logout">
+      <% if session[:user] %>
+         hi, <%= session[:vote] %>
+       <% end %>
+      </div>
+
     </div>
         <div><%= image_tag 'subNavBackgroundTop.png', :width => '1100', :height => '5' %></div>
       
@@ -52,7 +69,6 @@
           <% Product::ALLOW_Category.each do |level| %>
               <li><%= link_to level, category_path(:level => level) %></li>
           <% end %>
-
 
       </ul>
       </div>

@@ -4,7 +4,8 @@ class CustomersController < ApplicationController
    before_filter :require_sudo, :only => [:edit, :update, :destroy]
 
    def index
-    @customers = Customer.includes(:province).all
+     @customers = Customer.paginate page: params[:page], order: 'created_at desc',
+     per_page: 10
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,7 +52,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to login_path, notice: 'Customer was successfully created.' }
+        format.html { redirect_to login_path, notice: 'User #{@customer.user_name} was successfully created.' }
         format.json { render json: @customer, status: :created, location: @customer }
       else
         @provinces = Province.all.collect { |p| [p.name, p.id] }
@@ -61,6 +62,7 @@ class CustomersController < ApplicationController
       end
     end
   end
+
 
   # PUT /customers/1
   # PUT /customers/1.json
@@ -89,4 +91,5 @@ class CustomersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

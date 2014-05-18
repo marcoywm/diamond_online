@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
-   before_filter :require_sudo
+   before_filter :require_sudo, :only => [:edit, :update, :destroy]
   def index
-    @orders = Order.all
+    @orders = Order.paginate page: params[:page], order: 'created_at desc' ,
+    per_page: 5
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +26,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
+    @cart = current_cart
+    if @cart.line_items.empty?
+      redirect_to mains_url, notice: "Your cart is empty"
+      return
+    end
+
     @order = Order.new
 
     respond_to do |format|
@@ -42,10 +49,16 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-
+    @order.add_line_items_from_cart(current_cart)
+    @order.customer_id = session[:user_id]
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        session[:order]= @order.id
+
+        OrderNotifier.received(@order).deliver
+        format.html { redirect_to administrator_url, notice: 'Order was successfully created. please login or register' }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }

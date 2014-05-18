@@ -1,14 +1,27 @@
 DiamondSite::Application.routes.draw do
-  
+
+  resources :comments
+
+  #scope '(:locale)' do
+
+  resources :errors
+
   resources :carts
 
-  root :to => 'main#index'
+
+  match 'mains' => 'main#index'
   match 'main/:id' => 'main#show', :as => 'main', :via => :get
-  match "administrator" => "admin#index"
+  match "admin" => "admin#index"
+
+
   match 'main/a/:level' => 'main#a', :as => 'category', :via => :get
+
   match "search" => "main#search", :as => 'search', :via => :get
-  match "login" => "login#login", :as => 'login', :via => :get
-  match "haslogin" => "login#haslogin", :as => 'haslogin', :via => :post
+
+  #match "login" => "login#login", :as => 'login', :via => :get
+
+  #match "haslogin" => "login#haslogin", :as => 'haslogin', :via => :post
+
   match 'customers/:id/editfile' => 'customers#editfile', :as => 'editfile_customer', :via => :get
   match "results" => "main#search_results", :as => 'results', :via => :post
 
@@ -28,7 +41,23 @@ DiamondSite::Application.routes.draw do
 
   resources :images
 
-  resources :products
+  resources :products      do
+    get :who_bought, on: :member
+  end
+
+  root :to => 'main#index'
+#end
+
+
+  get 'administrator' => 'administrator#index'
+
+   controller :sessions do
+    get 'login' => :new
+     post 'login' => :create
+     delete 'logout' => :destroy
+   end
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

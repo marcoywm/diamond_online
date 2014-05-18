@@ -3,3 +3,6 @@
 <div class="mains">
   <%= render :partial => 'main', :collection => @products, :as => 'product' %>
 </div>
+
+<br/>
+<p><%= will_paginate @products %></p>

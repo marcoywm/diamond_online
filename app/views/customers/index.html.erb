@@ -1,6 +1,7 @@
 <h1>Listing customers</h1>
 </br>
 <%=link_to 'back to Manage dashborad', "http://localhost:3000/administrator"%>
+
 <table>
   <tr>
     <th>Fname</th>
@@ -41,6 +42,10 @@
 <% end %>
 </table>
 
-<br />
+<br/>
+<p><%= will_paginate @customers %></p>
+<br/>
+
+
 
 

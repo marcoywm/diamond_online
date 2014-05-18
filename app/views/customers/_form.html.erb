@@ -12,88 +12,102 @@
     </div>
     
   <% end %>
-  
-  <table>
-    <tr>
-      <td>
-        <div class="field">
-         <%= f.label :userName %><br />
-         <%= f.text_field :userName %>
-        </div>
-      </td>
-      <tr>
-      <td>
-         <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password %>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="field">
-          <%= f.label :FirstName %><br />
-         <%= f.text_field :fname %>
-         </div>
-        </td>
-      <td>
-       <div class="field">
-         <%= f.label :LastName %><br />
-         <%= f.text_field :lname %>
-       </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="field">
-         <%= f.label :address %><br />
-         <%= f.text_field :address %>
-       </div>
-        </td>
-      <td>
-       <div class="field">
-        <%= f.label :city %><br />
-        <%= f.text_field :city %>
-       </div>
-      </td>
-      <td>
-        <div class="field">
-         
-          <%= f.label :province %><br />
-          <%= f.select :province_id, @provinces%>
+    <fieldset>
+      <legend>Enter User Details</legend>
+      <table>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :User_Name %> <br />
+              <%= f.text_field :userName, size: 40 %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, size: 40 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
 
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="field">
-         <%= f.label :postCode %><br />
-         <%= f.text_field :postCode %>
-       </div>
-      </td>
-      <td>
-        <div class="field">
-         <%= f.label :phone %><br/>
-         <%= f.text_field :phone %>
-        </div>
-      <td>
-       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.text_field :email %>
-       </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      <div class="field">
-       <%= f.label :payment_method %><br />
-      <%= f.text_field :pay_method %>
-      </td>
-     </div>
-    </tr>
-  </table>
+              <%= f.label :password_confirmation, 'Confirm' %><br />
+              <%= f.password_field :password_confirmation, size: 40 %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :First_Name %><br />
+              <%= f.text_field :fname, size: 40 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :Last_Name %><br />
+              <%= f.text_field :lname, size: 40 %>
+            </div>
+          </td>
+        </tr>
+        <tr >
+          <td colspan="2">
+            <div class="field">
+              <%= f.label :address %><br />
+              <%= f.text_area :address,  :rows=>3, :cols=>80  %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :city %><br />
+              <%= f.text_field :city, size: 40 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :province %><br />
+              <%= f.select :province_id, @provinces%>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :postCode %><br/>
+              <%= f.text_field :postCode, size:20 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :phone %><br/>
+              <%= f.text_field :phone, size:20 %>
+            </div>
+
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.text_field :email, size:40 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :payment_method %><br />
+              <%= f.text_field :pay_method, size:20 %>
+            </div>
+          </td>
+        </tr>
+
+
+      </table>
   <div class="actions">
     <%= button_to 'save',  :action => :new %>
   </div>
+
+      </fieldset>
 <% end%>
